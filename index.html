@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Chip-8 | www.sergiosoriano.com</title>
+    <link rel="icon" href="favicon.ico" />
+    <link rel="stylesheet" href="css/style.css" />
+    <script src="js/chip8.js"></script>
+    <style>
+      @font-face {
+        font-family: slkscr;
+        src: url(resources/font/slkscr.ttf); /* Font by Jason Kottke */
+      }
+
+      main {
+        font-family: slkscr;
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+        background-color: lightgray;
+        height: 100%;
+      }
+
+      #container {
+        flex: 5;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+      }
+
+      #container canvas {
+        width: 95%;
+        height: 95%;
+        border-radius: 15px;
+      }
+
+      .title {
+        font-size: 50px;
+        flex: 0.5;
+        margin: 0.5rem 0px 0px 0px;
+        padding: 0px;
+      }
+
+      .rom,
+      * {
+        flex: 0.5;
+        font-size: 20px;
+        font-family: slkscr;
+        padding-bottom: 4px;
+      }
+      a,
+      a:hover,
+      a:focus,
+      a:active {
+        font-size: 0.75em;
+        text-decoration: none;
+        color: inherit;
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <h1 class="title">CHIP-8</h1>
+      <div id="container"></div>
+      <label class="rom"
+        >ROM
+        <select name="rom" id="rom">
+          <option value="pong2.c8" selected>PONG</option>
+          <option value="15PUZZLE">15PUZZLE</option>
+          <option value="CONNECT4">CONNECT4</option>
+          <option value="MAZE">MAZE</option>
+          <option value="MISSILE">MISSILE</option>
+          <option value="TICTAC">TICTAC</option>
+          <option value="UFO">UFO</option>
+          <option value="VBRIX">VBRIX</option>
+          <option value="VERS">VERS</option>
+          <option value="TANK">TANK</option>
+        </select></label
+      >
+      <footer>
+        <a href="http://www.sergiosoriano.com" target="_blank"
+          >www.sergiosoriano.com</a
+        >
+      </footer>
+    </main>
+
+    <script>
+      window.onload = function () {
+        let container = document.querySelector("#container");
+        let chip8 = new Chip8(container);
+        const input = document.querySelector("#rom");
+        input.addEventListener("change", function (e) {
+          chip8.loadProgram("resources/roms/" + input.value);
+        });
+        chip8.loadProgram("resources/roms/" + input.value);
+      };
+    </script>
+  </body>
+</html>
