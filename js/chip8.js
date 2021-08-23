@@ -24,6 +24,9 @@ var Chip8 = function (container) {
   let canvas = document.createElement("canvas");
   container.appendChild(canvas);
 
+  canvas.width  = 640;
+  canvas.height = 480;
+
   let memory;
   let V;
   let I;
@@ -75,8 +78,7 @@ var Chip8 = function (container) {
     if (refresh) {
       refresh = false;
 
-      canvas.width = canvas.clientWidth;
-      canvas.height = canvas.clientHeight;
+
 
       context.clearRect(0, 0, canvas.width, canvas.height);
 
