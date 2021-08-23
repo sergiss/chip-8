@@ -77,9 +77,7 @@ var Chip8 = function (container) {
   function render() {
     if (refresh) {
       refresh = false;
-
-
-
+      
       context.clearRect(0, 0, canvas.width, canvas.height);
 
       let pWidth  = canvas.width / 64;
