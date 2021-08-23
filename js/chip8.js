@@ -25,7 +25,7 @@ var Chip8 = function (container) {
   container.appendChild(canvas);
 
   canvas.width  = 640;
-  canvas.height = 480;
+  canvas.height = 320;
 
   let memory;
   let V;
